@@ -15,6 +15,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Forms;
 using System.Drawing;
+using OcrShot.Ocr;
+using Clipboard = System.Windows.Clipboard;
 
 namespace OcrShot.Windows
 {
@@ -87,7 +89,10 @@ namespace OcrShot.Windows
         private void TakeScreenshot()
         {
             Bitmap image = new ScreenshotWindow().TakeScreenshot();
-            if (image != null) image.Save("./test.jpg");
+            if (image != null)
+            {
+                Clipboard.SetText(TesseractWrapper.DoMagic(image));
+            }
         }
     }
 }

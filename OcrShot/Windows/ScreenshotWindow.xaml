@@ -1,0 +1,13 @@
+﻿<Window x:Class="OcrShot.Windows.ScreenshotWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OcrShot.Windows"
+        mc:Ignorable="d"
+        Title="ScreenshotWindow" Height="450" Width="800" Topmost="True" WindowStartupLocation="Manual" WindowState="Normal" WindowStyle="None" ResizeMode="NoResize">
+    <Grid>
+        <Image x:Name="TotalScreenshotImage"></Image>
+        <Canvas x:Name="GuiCanvas" MouseMove="GuiCanvas_MouseMove" MouseLeftButtonDown="GuiCanvas_MouseLeftButtonDown" MouseLeftButtonUp="GuiCanvas_MouseLeftButtonUp" Background="#00000000" />
+    </Grid>
+</Window>

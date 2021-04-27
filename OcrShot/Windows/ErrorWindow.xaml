@@ -1,0 +1,46 @@
+﻿<Window x:Class="OcrShot.Windows.ErrorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OcrShot.Windows"
+        mc:Ignorable="d"
+        Title="Error" Height="450" Width="800" ResizeMode="NoResize" Icon="/Resources/ocr.ico" >
+    <Window.Resources>
+        <Style x:Key="TextBlockStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="Background" Value="{x:Null}" />
+            <Setter Property="BorderBrush" Value="{x:Null}" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="IsReadOnly" Value="True" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{x:Null}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+    </Window.Resources>
+    <Grid Background="#0079d8">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="17*"/>
+            <ColumnDefinition Width="14*"/>
+            <ColumnDefinition Width="26*"/>
+            <ColumnDefinition Width="743*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="LabelSadFace" Content=":(" HorizontalAlignment="Left" Margin="3,10,0,0" VerticalAlignment="Top" Foreground="White" FontSize="100" Height="146" RenderTransformOrigin="0.773,0.611" Grid.Column="3"/>
+        <TextBlock x:Name="TextBlockError" Text="Error" HorizontalAlignment="Left" Margin="3,0,0,0" VerticalAlignment="Center" Foreground="White" FontSize="20" Height="122" RenderTransformOrigin="0.773,0.611" Width="656" TextWrapping="Wrap" Grid.Column="3"/>
+        <Image x:Name="ImageErrorQR" HorizontalAlignment="Left" Height="100" Margin="3,283,0,0" VerticalAlignment="Top" Width="100" Source="/Resources/ErrorQR.png" IsEnabled="False" Grid.Column="3"/>
+        <TextBox x:Name="TextBlockStackTrace" Text="Error" HorizontalAlignment="Left" Margin="108,283,0,0" VerticalAlignment="Top" Foreground="White" FontSize="10" Height="81" RenderTransformOrigin="0.773,0.611" Width="551" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" Style="{StaticResource TextBlockStyle}" Grid.Column="3"/>
+        <TextBlock x:Name="TextBlockGitHubTickets" HorizontalAlignment="Left" Margin="108,364,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Height="24" RenderTransformOrigin="0.773,0.611" Width="442" TextWrapping="Wrap" Grid.Column="3">
+            For more information visit:<LineBreak/>  
+            <Hyperlink NavigateUri="https://github.com/NoctusRex/OcrShot/issues" RequestNavigate="Hyperlink_RequestNavigate" Foreground="White" FontSize="8" >
+            https://github.com/NoctusRex/OcrShot/issues
+        </Hyperlink>
+        </TextBlock>
+    </Grid>
+</Window>

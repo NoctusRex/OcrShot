@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OcrShot.Windows"
         mc:Ignorable="d"
-        Title="ScreenshotWindow" Height="450" Width="800" Topmost="True" WindowStartupLocation="Manual" WindowState="Normal" WindowStyle="None" ResizeMode="NoResize">
+        Title="ScreenshotWindow" Height="450" Width="800" Topmost="True" WindowStartupLocation="Manual" WindowState="Normal" WindowStyle="None" ResizeMode="NoResize" Loaded="Window_Loaded" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Disabled" SizeToContent="WidthAndHeight" Cursor="Arrow">
     <Grid>
         <Image x:Name="TotalScreenshotImage"></Image>
         <Canvas x:Name="GuiCanvas" MouseMove="GuiCanvas_MouseMove" MouseLeftButtonDown="GuiCanvas_MouseLeftButtonDown" MouseLeftButtonUp="GuiCanvas_MouseLeftButtonUp" Background="#00000000" />

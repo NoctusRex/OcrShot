@@ -27,6 +27,7 @@ namespace OcrShot.Windows
     {
         private Hotkey ScreenshotHotkey { get; set; }
         private NotifyIcon NotifyIcon { get; set; }
+        private string StartupPath { get => System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Startup), "OcrShot.lnk"); }
 
         public MainWindow()
         {
@@ -51,8 +52,20 @@ namespace OcrShot.Windows
             };
             NotifyIcon.DoubleClick += NotifyIconDoubleClick;
 
+            CreateStartupShortcut();
+
             ShowInTaskbar = false;
             Hide();
+        }
+
+        private void CreateStartupShortcut()
+        {
+            dynamic shell = Activator.CreateInstance(Type.GetTypeFromProgID("WScript.Shell"));
+            dynamic link = shell.CreateShortcut(StartupPath);
+
+            link.TargetPath = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            link.WindowStyle = 1;
+            link.Save();
         }
 
         private void ScreenshotHotkeyTriggered(object sender, EventArgs e)
@@ -88,11 +101,18 @@ namespace OcrShot.Windows
 
         private void TakeScreenshot()
         {
-            Bitmap image = new ScreenshotWindow().TakeScreenshot();
+            using Bitmap image = new ScreenshotWindow().TakeScreenshot();
             if (image != null)
             {
                 Clipboard.SetText(TesseractWrapper.DoMagic(image));
             }
+        }
+
+        private void ScanButton_Click(object sender, RoutedEventArgs e)
+        {
+            Hide();
+            TakeScreenshot();
+            Show();
         }
     }
 }
